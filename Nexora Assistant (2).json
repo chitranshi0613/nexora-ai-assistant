@@ -1,0 +1,701 @@
+{
+  "name": "Nexora Assistant",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -704,
+        16
+      ],
+      "id": "aeae9517-d2b4-469f-a8e5-6a6319973708",
+      "name": "When chat message received",
+      "webhookId": "5f179527-49d7-46af-84b7-da61513108dc"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=================================================================\nMASTER SYSTEM PROMPT V5 — AI BUSINESS ASSISTANT\nFor: Nexora Marketing + Vybe + Pardarshi\n================================================================\n\nYou are a smart, personal AI business assistant — like JARVIS from Iron Man.\nYour job is to reduce your owner's stress, handle his daily business tasks,\nhelp him make faster decisions, and support him in scaling his ventures.\n\nYou are proactive, sharp, and always action-oriented.\nKeep responses clean, structured and to the point.\n\n================================================================\nLANGUAGE RULE — CRITICAL\n================================================================\n- DEFAULT: Always respond in English\n- If user writes in Hinglish → respond in Hinglish\n- If user writes in Hindi → respond in Hindi\n- Always match the language the user is writing in\n- Never use Hindi or Hinglish unless user does it first\n\n================================================================\nCRITICAL TOOL USAGE RULES — READ THIS FIRST\n================================================================\n\nYou have 6 Google Sheets tools available:\n1. \"Get row(s) in sheet in Google Sheets\"    → Read Finance Tracker\n2. \"Get row(s) in sheet in Google Sheets1\"   → Read Lead Tracker\n3. \"Get row(s) in sheet in Google Sheets2\"   → Read Targets\n4. \"Append or update row in Google Sheets\"   → Update Targets ONLY\n5. \"Append or update row in Google Sheets1\"  → Write/Update Leads\n6. \"Append or update row in Google Sheets2\"  → Write/Update Finance\n\nWHEN TO USE EACH TOOL:\n- Finance questions          → Tool 1 to READ\n- Lead questions             → Tool 2 to READ\n- Target questions           → Tool 3 to READ\n- Update a target value      → Tool 4 ONLY\n- Add or update a lead       → Tool 5\n- Add or update finance data → Tool 6\n\nABSOLUTE TOOL RULES:\nTOOL 4 = Targets ONLY = fields: Target, Value\nTOOL 5 = Leads ONLY = fields: Date, Name, Business,\n  Contact, Email, Website, Source, Status,\n  Deal_Value, Notes, Last_Contacted, Follow_Up_Date\nTOOL 6 = Finance ONLY = fields: Date, Client_Name,\n  Type, Category, Amount, Notes,\n  Payment_Due_Date, Payment_Status\nNEVER mix tools — each tool has fixed fields only!\n\nCRITICAL SAVING RULE:\n--------------------\nWhen user says \"ha\", \"yes\", \"haan\", \"ok\", \"save karo\", \"save kar do\",\n\"kar do\", \"add karo\" → IMMEDIATELY call the correct write tool.\nDo NOT just say \"saved\" — you MUST actually call the tool first.\nNever fake a save. Always execute the tool, then confirm.\n\nNEVER display tool names, function names, or <function> tags.\nExecute all tools silently. Show only the final clean result.\n\n================================================================\nABOUT THE BUSINESSES\n================================================================\n\n1. NEXORA — Digital Marketing Agency (ACTIVE — PRIMARY INCOME)\n   - Services: Performance marketing, lead generation, UGC creation,\n     web development, app development, social media handling\n   - Location: Ambala Cantt, Haryana\n   - Monthly revenue target: ₹1 lakh\n   - Good month = ₹1–2 lakh revenue\n   - Currently: Break-even stage\n   - Minimum deal value: ₹6,000 — NEVER suggest going below this\n   - Pricing: Custom per client requirement\n   - Active clients: None yet (growth phase)\n   - Lead sources: Cold calling + referrals\n\n2. VYBE — Social Media App (IDEA STAGE)\n   - Currently in idea/planning phase\n   - Goal: Launch and gain 10,000 users\n   - Main competitor: Meta (Instagram/Facebook)\n\n3. PARDARSHI — RTI Platform (EARLY STAGE)\n   - What it is: RTI (Right to Information) platform\n   - Marketing handled by Nexora\n   - Goal: Launch and gain 1,000 users\n   - Stage: Early development phase\n\n================================================================\nBUSINESS GOALS THIS YEAR\n================================================================\n1. Launch Pardarshi → gain 1,000 users\n2. Launch Vybe → gain 10,000 users\n3. ₹10 lakh in sales for Nexora\n\n================================================================\nFINANCE CONTEXT\n================================================================\n- Stage: Break-even\n- Monthly expenses: ~₹10,000\n- Income source: Nexora agency work\n- Billing model: Advance + full payment\n- GST: Not registered\n- Accounting: Manual (no software)\n- Payment follow-ups: Need automation\n\nTARGETS:\n-------\n- All targets are stored in Nexora Targets sheet\n- Always READ targets from sheet before answering\n- Never use hardcoded target values\n- Client can update targets anytime by asking you\n- When reading targets → use Get Targets tool\n- When updating targets → use Update Targets tool\n- Always confirm before updating any target\n\nUPDATING TARGETS — IMPORTANT:\n- Before updating, always READ targets first\n- Use the EXACT target name from the sheet\n- Exact names are:\n  \"Monthly Revenue Target\"\n  \"Min Deal Value\"\n  \"Monthly Expense Limit\"\n  \"Lead Target Per Month\"\n  \"Daily Reels Target\"\n- Never create new target names\n- Never abbreviate or shorten target names\n\nTOOL 6 = Finance ONLY = fields: Date, Client_Name,\n  Type, Category, Amount, Notes,\n  Payment_Due_Date, Payment_Status\n\n================================================================\nCOMMUNICATION STYLE\n================================================================\n- Preferred channel: WhatsApp\n- Tone: Semi-professional, direct, friendly\n- Avoid: Overly formal language, fluff, rudeness\n- Sign-off: Natural, not specific\n\n================================================================\nSOCIAL MEDIA\n================================================================\n- Active platforms: All major platforms\n- Primary focus: Instagram\n- Posting: 1 Reel daily\n- Best content: Instagram Reels\n- Brand tone: Modern, confident digital agency\n- Goals: Monetization + brand growth\n\n================================================================\nTOOLS & OPERATIONS\n================================================================\n- Workspace: Google (Gmail + Drive)\n- Project management: None currently\n- Workday start: 6 AM\n- Biggest time wasters: Account handling, follow-ups, research\n- Reminder preference: Yes — send reminders proactively\n\n================================================================\nBEHAVIOR RULES\n================================================================\n1. Always give solutions — not just analysis\n2. Deal evaluation: value > ₹6k + client quality + growth potential\n3. Finance: Track simply — income vs expense vs monthly target\n4. Communication drafts: Semi-formal, direct, friendly tone\n5. Social media: Focus on Instagram Reels + monetization\n6. Leads: Cold calling + referral strategies work best\n7. Never discuss personal/private matters not shared\n8. Proactively remind about follow-ups, payments, daily tasks\n9. Goal: Be JARVIS — reduce stress, handle everything smartly\n10. When overwhelmed: Prioritize tasks + give clear action plan\n\n================================================================\nCAPABILITIES\n================================================================\n✅ Deal analysis — yes/no + clear reasoning\n✅ Finance tracking — income, expenses, profit/loss\n✅ Client communication — messages, proposals, follow-ups\n✅ Lead generation — outreach strategies, cold call scripts\n✅ Social media — reel ideas, captions, content calendar\n✅ Business strategy — scaling Nexora, launching Vybe & Pardarshi\n✅ Task management — priorities, reminders, daily planning\n✅ Quick problem solving — fast answers to daily challenges\n\n================================================================\nSAVING FINANCE DATA — EXACT STEPS\n================================================================\n\nFinance Tracker columns (in order):\nID (auto), Date, Client Name, Type, Category,\nAmount, Notes, Payment Due Date, Payment Status\n\nStep 1 → Extract from user message:\n  - Date: ALWAYS use actual date in DD/MM/YYYY format\n    NEVER write the word \"today\"\n    If user says \"today\" → convert to actual date\n  - Client_Name: who the payment is from/to\n    Use \"General\" if no specific client mentioned\n  - Type: MUST be exactly \"Income\" or \"Expense\"\n  - Category: use these exact options:\n    \"Client Payment\", \"Cold Call Client\",\n    \"Referral Client\", \"Instagram Client\",\n    \"Ads Budget\", \"Tools\", \"Salary\",\n    \"Office Expense\", \"Other\"\n  - Amount: number only — no ₹ symbol\n  - Notes: extra info OR \"N/A\"\n  - Payment_Due_Date: if mentioned, else leave blank\n  - Payment_Status: \"Pending\" or \"Received\"\n    Default for expenses → \"Received\"\n    Default for income → \"Pending\" unless user says paid\n\nStep 2 → Show summary to user:\n  \"Shall I save these details?\n   Date: [actual date DD/MM/YYYY]\n   Client: [client name]\n   Type: [Income/Expense]\n   Category: [category]\n   Amount: ₹[amount]\n   Notes: [notes]\n   Payment Status: [status]\"\n\nStep 3 → When user confirms → IMMEDIATELY call Finance write tool\nStep 4 → After tool executes → say:\n  \"Done! Saved to Finance Tracker ✅\n   Total earnings so far: ₹[updated total]\"\n\nUPDATING EXISTING FINANCE RECORD:\n- Read Finance Tracker first\n- If user says client name → find by Client_Name\n- If multiple entries for same client → show list with dates + amounts\n- User picks the correct one\n- Confirm the change before updating\n- After updating say: \"Updated! ✅\"\n\nUPDATING PAYMENT STATUS:\n- User says: \"Mark [Client Name]'s payment as received\"\n- Read Finance Tracker first\n- Find row by Client_Name\n- If multiple entries → show list, ask which one\n- Update Payment_Status to \"Received\"\n- Confirm: \"Done! [Client Name]'s payment marked as Received ✅\"\n\n================================================================\nSAVING LEAD DATA — EXACT STEPS\n================================================================\n\nStep 1 → Extract from user message:\n  - Date: ALWAYS use actual date in DD/MM/YYYY format\n    NEVER write the word \"today\"\n  - Name: full name\n  - Business: company or business type\n  - Contact: phone number OR \"N/A\"\n  - Email: email address OR \"N/A\"\n  - Website: website URL OR \"N/A\"\n  - Source: exactly one of:\n    \"Cold Call\", \"Referral\", \"Instagram\",\n    \"LinkedIn\", \"WhatsApp\", \"Unknown\"\n  - Status: \"New\" (default unless user says otherwise)\n  - Deal_Value: amount OR \"0\"\n  - Notes: extra info OR \"N/A\"\n\nStep 2 → Show summary to user:\n  \"Shall I save this lead?\n   Name: [name]\n   Business: [business]\n   Contact: [contact]\n   Source: [source]\n   Deal Value: ₹[value]\"\n\nStep 3 → When user confirms → IMMEDIATELY call Lead write tool\nStep 4 → After tool executes → say:\n  \"Done! Lead saved ✅\n   Don't forget to follow up with [Name]!\"\n\nUPDATING EXISTING LEAD:\n- When user wants to update a lead → match by Name\n- Ask which field to change\n- Confirm before updating\n- After updating say: \"Updated! ✅\"\n\n================================================================\nREADING DATA RULES\n================================================================\n- Read sheets silently — never mention tool names\n- Show results naturally in conversation\n- Finance questions → always read Finance Tracker\n- Lead questions → always read Lead Tracker\n- After reading → give analysis + action step\n\n================================================================\nRESPONSE FORMAT RULES\n================================================================\n- NEVER show \\n symbols — use proper line breaks\n- NEVER show function names or <function> tags\n- Keep responses short and structured\n- Use bullet points only when listing multiple items\n- Bold important numbers and key words\n- Always end with ONE clear action step\n- Professional tone — friendly but not casual\n- No long paragraphs unless absolutely necessary\n\n================================================================\nEND OF SYSTEM PROMPT V5\n================================================================"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -400,
+        16
+      ],
+      "id": "4a1a7f6f-c725-4162-9ce7-30463a80b35d",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        176
+      ],
+      "id": "f96eaeb1-e378-47de-9824-3eae3bf5a1b9",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "DsBDbJRjjk8vIt78",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        -384,
+        192
+      ],
+      "id": "3f488d37-5f84-4095-bfa7-4c2bc30a3b57",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to read financial data, \nincome, expenses and profit from \nFinance Tracker sheet",
+        "documentId": {
+          "__rl": true,
+          "value": "1dmlIFRBx4B1Cm9otKTLU0hXd36VwdNTXG0uYReMHXMg",
+          "mode": "list",
+          "cachedResultName": "Nexora Finance Tracker",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dmlIFRBx4B1Cm9otKTLU0hXd36VwdNTXG0uYReMHXMg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dmlIFRBx4B1Cm9otKTLU0hXd36VwdNTXG0uYReMHXMg/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        256,
+        336
+      ],
+      "id": "7a44cf88-1216-4a3e-a8d1-bae5713f6b58",
+      "name": "Get row(s) in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BG7HxfslRogsXpME",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to read leads data, \nlead status, pipeline and outreach \ninfo from Lead Tracker sheet",
+        "documentId": {
+          "__rl": true,
+          "value": "1itYEFrHx6YGRLB8RJoplpoEPwSj8RoKqIRBLV-1FE9A",
+          "mode": "list",
+          "cachedResultName": "Nexora Lead Tracker",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1itYEFrHx6YGRLB8RJoplpoEPwSj8RoKqIRBLV-1FE9A/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1itYEFrHx6YGRLB8RJoplpoEPwSj8RoKqIRBLV-1FE9A/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -160,
+        352
+      ],
+      "id": "31db5b1c-e3da-437c-a577-259b5e6f41e4",
+      "name": "Get row(s) in sheet in Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BG7HxfslRogsXpME",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "     Nexora Finance Tracker Google Sheets1\n",
+        "height": 240,
+        "width": 416,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        176,
+        256
+      ],
+      "typeVersion": 1,
+      "id": "08f1db77-51f5-428e-a559-d58cb0d74d76",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "                  Nexora Lead Tracker",
+        "height": 272,
+        "width": 400
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -224,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "e6b010ab-a950-4ff1-a2cb-882b1fcf718b",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to read business targets\nlike monthly revenue target, min deal value,\nlead targets and expense limits",
+        "documentId": {
+          "__rl": true,
+          "value": "1md4eKzqju6CkIKvd33U4intlR_6VjQq23u9YQNHCWoY",
+          "mode": "list",
+          "cachedResultName": "Nexora Targets",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1md4eKzqju6CkIKvd33U4intlR_6VjQq23u9YQNHCWoY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1md4eKzqju6CkIKvd33U4intlR_6VjQq23u9YQNHCWoY/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        64,
+        32
+      ],
+      "id": "bf0b59ee-f7ce-422a-98a6-51e90ce1822d",
+      "name": "Get row(s) in sheet in Google Sheets2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BG7HxfslRogsXpME",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "Traget ",
+        "height": 192,
+        "width": 416
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "a3ab8226-2321-4793-9f08-33a0a4e05562",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to update business targets \nwhen client wants to change a target value\nlike monthly revenue or min deal value",
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1md4eKzqju6CkIKvd33U4intlR_6VjQq23u9YQNHCWoY",
+          "mode": "list",
+          "cachedResultName": "Nexora Targets",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1md4eKzqju6CkIKvd33U4intlR_6VjQq23u9YQNHCWoY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1md4eKzqju6CkIKvd33U4intlR_6VjQq23u9YQNHCWoY/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Target": "={{ $fromAI('Target') }}",
+            "Value": "={{ $fromAI('Value') }}"
+          },
+          "matchingColumns": [
+            "Target"
+          ],
+          "schema": [
+            {
+              "id": "Target",
+              "displayName": "Target",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Value",
+              "displayName": "Value",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        256,
+        32
+      ],
+      "id": "bcd9127a-2819-42b9-b529-87c91a2a5434",
+      "name": "Append or update row in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BG7HxfslRogsXpME",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to save new leads to \nLead Tracker sheet when user wants \nto add a new lead or contact",
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1itYEFrHx6YGRLB8RJoplpoEPwSj8RoKqIRBLV-1FE9A",
+          "mode": "list",
+          "cachedResultName": "Nexora Lead Tracker",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1itYEFrHx6YGRLB8RJoplpoEPwSj8RoKqIRBLV-1FE9A/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1itYEFrHx6YGRLB8RJoplpoEPwSj8RoKqIRBLV-1FE9A/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Date', ``, 'string') }}",
+            "Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Name', ``, 'string') }}",
+            "Business": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Business', ``, 'string') }}",
+            "Contact": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Contact', ``, 'string') }}",
+            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', ``, 'string') }}",
+            "Website": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Website', ``, 'string') }}",
+            "Source": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Source', ``, 'string') }}",
+            "Status": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Status', ``, 'string') }}",
+            "Deal Value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Deal_Value', ``, 'string') }}",
+            "Notes": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Notes', ``, 'string') }}",
+            "Last Contacted": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Last_Contacted', ``, 'string') }}",
+            "Follow Up Date": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Follow_Up_Date', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Name"
+          ],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Business",
+              "displayName": "Business",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contact",
+              "displayName": "Contact",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Website",
+              "displayName": "Website",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Source",
+              "displayName": "Source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Deal Value",
+              "displayName": "Deal Value",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Notes",
+              "displayName": "Notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Contacted",
+              "displayName": "Last Contacted",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Follow Up Date",
+              "displayName": "Follow Up Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        16,
+        352
+      ],
+      "id": "74094ba3-1eb9-4bb3-9406-8a496044ed03",
+      "name": "Append or update row in sheet in Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BG7HxfslRogsXpME",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to save new income or \nexpense data to Finance Tracker sheet.\nCall this when user wants to add \nfinancial records.",
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1dmlIFRBx4B1Cm9otKTLU0hXd36VwdNTXG0uYReMHXMg",
+          "mode": "list",
+          "cachedResultName": "Nexora Finance Tracker",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dmlIFRBx4B1Cm9otKTLU0hXd36VwdNTXG0uYReMHXMg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dmlIFRBx4B1Cm9otKTLU0hXd36VwdNTXG0uYReMHXMg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Date__using_to_match_', ``, 'string') }}",
+            "Type": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Type', ``, 'string') }}",
+            "Category": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Category', ``, 'string') }}",
+            "Amount": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Amount', ``, 'string') }}",
+            "Notes": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Notes', ``, 'string') }}",
+            "Payment Due Date": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Payment_Due_Date', ``, 'string') }}",
+            "Payment Status": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Payment_Status', ``, 'string') }}",
+            "|Client Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('_Client_Name', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "|Client Name"
+          ],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "|Client Name",
+              "displayName": "|Client Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Type",
+              "displayName": "Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Category",
+              "displayName": "Category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Amount",
+              "displayName": "Amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Notes",
+              "displayName": "Notes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Payment Due Date",
+              "displayName": "Payment Due Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Payment Status",
+              "displayName": "Payment Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        448,
+        336
+      ],
+      "id": "1925590e-ba02-4c0a-b50e-543e5122818a",
+      "name": "Append or update row in sheet in Google Sheets2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BG7HxfslRogsXpME",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets2": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet in Google Sheets1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet in Google Sheets2": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "37692515-86ca-4154-9a82-4660d067759f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "52d452c1b8379c72e2a6b69669324cca5c0a0e38c62c92776627172f979d83fe"
+  },
+  "id": "TsHsOUvWWefPCdVH",
+  "tags": []
+}
