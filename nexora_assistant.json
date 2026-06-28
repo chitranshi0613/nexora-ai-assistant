@@ -44,9 +44,11 @@
       "id": "f96eaeb1-e378-47de-9824-3eae3bf5a1b9",
       "name": "Groq Chat Model",
       "credentials": {
-  "googleSheetsOAuth2Api": {
+  "groqApi": {
     "id": "",
-    "name": "Google Sheets account"
+    "name": "Groq account"
+  }
+}
   }
 }
         }
