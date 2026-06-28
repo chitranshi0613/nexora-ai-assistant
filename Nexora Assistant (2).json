@@ -44,9 +44,11 @@
       "id": "f96eaeb1-e378-47de-9824-3eae3bf5a1b9",
       "name": "Groq Chat Model",
       "credentials": {
-        "groqApi": {
-          "id": "DsBDbJRjjk8vIt78",
-          "name": "Groq account"
+  "googleSheetsOAuth2Api": {
+    "id": "",
+    "name": "Google Sheets account"
+  }
+}
         }
       }
     },
@@ -93,7 +95,7 @@
       "name": "Get row(s) in sheet in Google Sheets",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "BG7HxfslRogsXpME",
+          "id": "",
           "name": "Google Sheets account"
         }
       }
@@ -128,7 +130,7 @@
       "name": "Get row(s) in sheet in Google Sheets1",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "BG7HxfslRogsXpME",
+          "id": "",
           "name": "Google Sheets account"
         }
       }
@@ -194,7 +196,7 @@
       "name": "Get row(s) in sheet in Google Sheets2",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "BG7HxfslRogsXpME",
+          "id": "",
           "name": "Google Sheets account"
         }
       }
@@ -279,7 +281,7 @@
       "name": "Append or update row in sheet in Google Sheets",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "BG7HxfslRogsXpME",
+          "id": "",
           "name": "Google Sheets account"
         }
       }
@@ -448,7 +450,7 @@
       "name": "Append or update row in sheet in Google Sheets1",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "BG7HxfslRogsXpME",
+          "id": "",
           "name": "Google Sheets account"
         }
       }
@@ -578,7 +580,7 @@
       "name": "Append or update row in sheet in Google Sheets2",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "BG7HxfslRogsXpME",
+          "id": "",
           "name": "Google Sheets account"
         }
       }
